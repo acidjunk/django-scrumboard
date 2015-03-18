@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Wishlist <small>Browse feature requests</small>
+        </h1>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/wishlist">Wishlist</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {{  wish.name|capfirst|truncatewords:3 }}
+        </li>
+    </ul>
+
+    <form method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <input type="submit" value="Submit" />
+    </form>
+{%  endblock %}

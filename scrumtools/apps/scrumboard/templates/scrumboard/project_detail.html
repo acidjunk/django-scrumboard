@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Projects <small>Manage projects</small>
+        </h1>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/page/scrumboard">ScrumBoard</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/scrumboard/projectlist">Projects</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {{  project.name|capfirst|truncatewords:3 }}
+        </li>
+    </ul>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                {{ project.name }}
+            </h3>
+        </div>
+        <div class="panel-body">
+            {{ project.description }}
+        </div>
+    </div>
+    <a href="{% url "scrumboard:project_edit" project.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'edit' %} edit</a>
+    <a href="{% url "scrumboard:project_delete" project.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'trash' %} delete</a>
+{% endblock %}

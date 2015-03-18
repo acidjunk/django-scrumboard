@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Statuses <small>Manage statuses</small>
+        </h1>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/page/scrumboard">ScrumBoard</a> <span class="divider">/</span>
+        </li>
+        <li>
+            <a href="/scrumboard/statuslist">Statuses</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            {{  status.name|capfirst|truncatewords:3 }}
+        </li>
+    </ul>
+
+    <form method="post">{% csrf_token %}
+        Are you sure you want to delete "{{ object }}" ?
+        <input type="submit" value="Submit" />
+    </form>
+{%  endblock %}

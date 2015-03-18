@@ -1,0 +1,182 @@
+[
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 1
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:30:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 2
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 3
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 4
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 5
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 6
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 7
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 8
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 9
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 10
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 11
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 12
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 13
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 14
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 15
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 16
+},
+{
+    "fields": {
+        "votes": 1,
+        "name": "We want a responsive admin template",
+        "created_on": "2015-03-10T23:43:29Z",
+        "description": "The current admin template is only partially responsive. Can we have an admin interface for iPhone also?"
+    },
+    "model": "wishlist.wish",
+    "pk": 17
+},
+{
+    "fields": {
+        "votes": 4,
+        "name": "Please create a view for the scrumboard",
+        "created_on": "2015-03-10T23:55:41Z",
+        "description": "The scrum board is really empty like this and serves an error. Please create a working example."
+    },
+    "model": "wishlist.wish",
+    "pk": 18
+}
+]

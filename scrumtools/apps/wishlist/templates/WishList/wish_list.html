@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>
+            Wishlist <small>Browse feature requests</small>
+        </h1>
+    </div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="/">Home</a> <span class="divider">/</span>
+        </li>
+        <li class="active">
+            Wishlist
+        </li>
+    </ul>
+
+    <p>
+        <a href="{% url "wishlist:wish_new" %}" class="btn btn-primary">{% bootstrap_icon 'plus' %} Add wish</a>
+    </p>
+
+    {% if object_list %}
+        <table class="table table-responsive table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Votes
+                    </th>
+                    <th>
+                        Wish
+                    </th>
+                    <th>
+                        Created on
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for wish in object_list %}
+{#                    <tr {% if wish.votes > 5 %}class="danger"{% elif wish.votes > 3 %}class="warning"{% elif wish.votes > 0 %}class="success"{% endif %}>#}
+                  <tr>
+                    <td>
+                        <span class="badge">{{ wish.votes }}</span>
+                    </td>
+                    <td>
+                        <a href="{% url "wishlist:wish_detail" wish.id %}">{{ wish.name }}</a>
+                    </td>
+                    <td>
+                        {{ wish.created_on }}
+                    </td>
+                    <td>
+                        <span class="pull-right"><a href="{% url "wishlist:wish_edit" wish.id %}" class="btn btn-primary btn-xs" role="button">edit</a> <a href="{% url "wishlist:wish_delete" wish.id %}" class="btn btn-primary btn-xs" role="button">delete</a></span>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if is_paginated %}
+            <ul class="pagination">
+                <li>
+                    <a href="?page=1"><<</a>
+                </li>
+                <li>
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}"><</a>
+                    {% endif %}
+                </li>
+                {% if page_obj.has_previous %}
+                <li>
+                    <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                </li>
+                {% endif %}
+                <li class="active">
+                    <a href="#">{{ page_obj.number }}</a>
+                </li>
+                {% if page_obj.has_next %}
+                <li>
+                    <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                </li>
+                {% endif %}
+                <li>
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">></a>
+                    {% endif %}
+                </li>
+                <li>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">>></a>
+                </li>
+            </ul>
+        {% endif %}
+    {% else %}
+        <div class="info">No wishes</div>
+    {% endif %}
+{% endblock %}
