@@ -1,16 +1,44 @@
 
-"""
-Loops through calls and makes a GET request to test API calls
-"""
-
 import json
 import requests
 
-# TODO Place your access_token here!
-access_token = ''
+##
+# TODO: Fill in your superuser credentials!
+##
+
+username = ''
+password = ''
+
+"""
+Global settings
+"""
+
+api_url = 'http://localhost:8000/api'
+
+"""
+Retrieve token from username/password combination POST
+"""
+
+headers = {'Content-type': 'application/json', 'Accept': 'application/json'}
+parameters = {
+    'username': username,
+    'password': password
+}
+resp = requests.post(url='%s/token/' % api_url, data=json.dumps(parameters), headers=headers)
+access_token = resp.json()['token']
+
+"""
+PRINT retrieved access token
+"""
+
+print "\nRetrieved access token (KEY): %s\n\n" % access_token
+
+"""
+Loops through calls and makes a GET request to test each API call
+"""
+
 
 api_calls = ['users', 'groups', 'wishes', 'statuses', 'projects', 'sprints', 'stories', 'tasks']
-api_url = 'http://localhost:8000/api'
 headers = {'Authorization': 'Token %s' % access_token}
 
 for item in api_calls:
