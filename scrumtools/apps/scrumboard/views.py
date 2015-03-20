@@ -75,12 +75,12 @@ class StoryList(ListView):
 
 class StoryCreate(CreateView):
     model = Story
-    form_class =  modelform_factory(Story, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
+    form_class = modelform_factory(Story, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
     success_url = reverse_lazy('scrumboard:story_list')
 
 class StoryUpdate(UpdateView):
     model = Story
-    form_class =  modelform_factory(Story, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
+    form_class = modelform_factory(Story, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
     success_url = reverse_lazy('scrumboard:story_list')
 
 class StoryDelete(DeleteView):
@@ -97,12 +97,12 @@ class TaskList(ListView):
 
 class TaskCreate(CreateView):
     model = Task
-    form_class =  modelform_factory(Task, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3),"modified_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
+    form_class = modelform_factory(Task, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3),"modified_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
     success_url = reverse_lazy('scrumboard:task_list')
 
 class TaskUpdate(UpdateView):
     model = Task
-    form_class =  modelform_factory(Task, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3),"modified_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
+    form_class = modelform_factory(Task, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3),"modified_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
     success_url = reverse_lazy('scrumboard:task_list')
 
 class TaskDelete(DeleteView):

@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     url(r'^page/', include('scrumtools.apps.staticpage.urls', namespace='page')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('scrumtools.api.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/token/', obtain_auth_token, name='api-token'),
 )

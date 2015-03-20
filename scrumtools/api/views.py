@@ -9,8 +9,10 @@ class DefaultsMixin(object):
     """Default settings for view authentication, permissions, filtering
      and pagination."""
 
+    # TODO If you wish, you can change API permissions here
     authentication_classes = (
         authentication.BasicAuthentication,
+        authentication.SessionAuthentication,
         authentication.TokenAuthentication,
     )
     permission_classes = (

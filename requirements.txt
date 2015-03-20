@@ -1,3 +1,4 @@
+requests
 Django==1.7.6
 Markdown==2.6.1
 django-bootstrap3==5.1.1
