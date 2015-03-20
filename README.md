@@ -20,3 +20,4 @@ Changelog
 -added some static pages
 -addes the starting point for a one page app based on prototype.js, underscore.js and backbone.js
 -added a bootstrap3 design
+-added REST API GET tester
