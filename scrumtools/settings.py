@@ -38,14 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bootstrap3',
-    'datetimewidget',
+    'sitetree',
+    'crispy_forms',
     'rest_framework',
     'rest_framework.authtoken',
     'debug_toolbar',
     'scrumtools.apps.staticpage',
     'scrumtools.apps.scrumboard',
-    'scrumtools.apps.wishlist'
+    'scrumtools.apps.wishlist',
+    'scrumtools.apps.utils',
+    'scrumtools.navigation',
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -94,9 +96,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
-BOOTSTRAP3 = { 'javascript_in_head': True }
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICPAGES_DIRECTORY=os.path.join(BASE_DIR, 'pages')

@@ -1,40 +1,52 @@
-{% extends 'base.html' %}
-{% load bootstrap3 %}
+{% extends "base.html" %}
+{% load sitetree %}
+
+{% block title %} {% sitetree_page_title from "main_en" %} {% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block statusbar %}
+    {% include "statusbar.html" %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
 
 {% block content %}
-    <div class="page-header">
-        <h1>
-            Wishlist <small>Browse feature requests</small>
-        </h1>
-    </div>
-    <ul class="breadcrumb">
-        <li>
-            <a href="/">Home</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="/wishlist">Wishlist</a> <span class="divider">/</span>
-        </li>
-        <li class="active">
-            {{  wish.name|capfirst|truncatewords:3 }}
-        </li>
-    </ul>
+    <div class="ui segment">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                {{ wish.name }}
-            </h3>
-        </div>
-        <div class="panel-body">
-            {{ wish.description }}
-        </div>
-        <div class="panel-footer">
-            <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-8 ">Votes <span class="badge">{{ wish.votes }}</span></div>
-                <div class="col-md-4 col-sm-4 col-xs-4"><span class="pull-right"><i>{{ wish.created_on }}</i></span></div>
+        {#    Header#}
+        <div class="ui grid">
+
+            <div class="left floated left aligned ten wide column">
+                <h1 class="ui header"><i class="{% sitetree_page_hint from "main_en" %} icon"></i>
+
+                    <div class="content">
+                        {% sitetree_page_title from "main_en" %}
+                    </div>
+                </h1>
             </div>
+            <div class="right floated right aligned six wide column">
+                <a href="{% url 'wishlist:wish-new' %}" class="blue ui labeled icon button"><i class="add icon"></i>Wish</a>
+            </div>
+
         </div>
+        {#    End Header#}
+
+        <table class="ui blue unstackable definition table">
+            <tr>
+                <td>Name</td>
+                <td>{{ wish.name }}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{ wish.description }}</td>
+            </tr>
+                   </table>
+        <a class="ui blue button" href="{% url "wishlist:wish-edit" wish.id %}"><i class="edit icon"></i> Edit</a>
+        <a class="ui blue button" href="{% url "wishlist:wish-delete" wish.id %}"><i class="trash icon"></i> Delete</a>
+
     </div>
-    <a href="{% url "wishlist:wish_edit" wish.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'edit' %} edit</a>
-    <a href="{% url "wishlist:wish_delete" wish.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'trash' %} delete</a>
 {% endblock %}

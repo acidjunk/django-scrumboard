@@ -2,5 +2,12 @@
 {% load i18n %}
 
 {% block content %}
-    <p>{% trans "Your account is now activated." %}</p>
+    <div class="ui two column centered grid">
+        <div class="column">
+            <div class="ui green raised segment">
+                <h2 class="ui dividing header">{% trans "Account activation" %}</h2>
+                <p>{% trans "Your account is now activated." %}</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -1,94 +1,70 @@
-{% extends 'base.html' %}
-{% load bootstrap3 %}
+{% extends "base.html" %}
+{% load sitetree %}
+{% load captureas %}
+{% load render_page_header %}
+
+{% block title %} {% sitetree_page_title from "main_en" %} {% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block statusbar %}
+    {% include "statusbar.html" %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
 
 {% block content %}
-    <div class="page-header">
-        <h1>
-            Sprints <small>Manage sprints</small>
-        </h1>
-    </div>
-    <ul class="breadcrumb">
-        <li>
-            <a href="/">Home</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="/page/scrumboard">ScrumBoard</a> <span class="divider">/</span>
-        </li>
-        <li class="active">
-            Sprints
-        </li>
-    </ul>
-
-    <p>
-        <a href="{% url "scrumboard:sprint_new" %}" class="btn btn-primary">{% bootstrap_icon 'plus' %} Add sprint</a>
-    </p>
-
-    {% if object_list %}
-        <table class="table table-responsive table-striped table-hover">
-            <thead>
+    <div class="ui segment">
+        {#    Header#}
+        {% captureas page_title %}{% sitetree_page_title from "main_en" %}{% endcaptureas %}
+        {% captureas page_icon %}{% sitetree_page_hint from "main_en" %}{% endcaptureas %}
+        {% render_page_header_complete page_title page_icon 'Sprint' 'scrumboard:sprint-new' request.GET.quicksearch %}
+        {#    End Header#}
+        {% if object_list %}
+            <table class="ui blue unstackable striped table">
+                <thead>
                 <tr>
-
+                    <th>
+                        Developer Days
+                    </th>
                     <th>
                         Name
                     </th>
                     <th>
-                        Ends
+                        Created on
                     </th>
                     <th>
                     </th>
                 </tr>
-            </thead>
-            <tbody>
-            {% for item in object_list %}
-{#                    <tr {% if item.votes > 5 %}class="danger"{% elif item.votes > 3 %}class="warning"{% elif item.votes > 0 %}class="success"{% endif %}>#}
-                  <tr>
-                    <td>
-                        <a href="{% url "scrumboard:sprint_detail" item.id %}">{{ item.name }}</a>
-                    </td>
-                    <td>
-                        {{ item.end }}
-                    </td>
-                    <td>
-                        <span class="pull-right"><a href="{% url "scrumboard:sprint_edit" item.id %}" class="btn btn-primary btn-xs" role="button">edit</a> <a href="{% url "scrumboard:sprint_delete" item.id %}" class="btn btn-primary btn-xs" role="button">delete</a></span>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        {% if is_paginated %}
-            <ul class="pagination">
-                <li>
-                    <a href="?page=1"><<</a>
-                </li>
-                <li>
-                    {% if page_obj.has_previous %}
-                        <a href="?page={{ page_obj.previous_page_number }}"><</a>
-                    {% endif %}
-                </li>
-                {% if page_obj.has_previous %}
-                <li>
-                    <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
-                </li>
-                {% endif %}
-                <li class="active">
-                    <a href="#">{{ page_obj.number }}</a>
-                </li>
-                {% if page_obj.has_next %}
-                <li>
-                    <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
-                </li>
-                {% endif %}
-                <li>
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">></a>
-                    {% endif %}
-                </li>
-                <li>
-                    <a href="?page={{ page_obj.paginator.num_pages }}">>></a>
-                </li>
-            </ul>
+                </thead>
+                <tbody>
+                {% for sprint in object_list %}
+                    <tr>
+                        <td>
+                            <span class="badge">{{ sprint.developer_days }}</span>
+                        </td>
+                        <td>
+                           {{ sprint.name }}
+                        </td>
+                        <td>
+                            {{ sprint.created_on }}
+                        </td>
+                        <td class="right aligned">
+                            <a href="{% url "scrumboard:sprint-detail" sprint.id %}"><i class="search icon"></i></a>
+                            <a href="{% url "scrumboard:sprint-edit" sprint.id %}"><i class="edit icon"></i></a>
+                            <a href="{% url "scrumboard:sprint-delete" sprint.id %}"><i class="trash icon"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            {% load paginator %}
+            {% paginator page_obj request %}
+        {% else %}
+            <div class="info">No sprints found</div>
         {% endif %}
-    {% else %}
-        <div class="info">No sprints</div>
-    {% endif %}
+    </div>
 {% endblock %}

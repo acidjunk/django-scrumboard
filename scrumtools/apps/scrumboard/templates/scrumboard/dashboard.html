@@ -1,0 +1,112 @@
+{%  extends "base.html" %}
+
+{% block title %}
+    Scrumboard - Home
+{% endblock %}
+
+{% block statusbar %}
+    <h1 class="ui header"><i class="windows icon"></i>
+        <div class="content">
+            Scrumboard
+        </div>
+    </h1>
+{% endblock %}
+
+{% block content %}
+{# https://github.com/RubaXa/Sortable#}
+<script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.2.0/Sortable.min.js"></script>
+<div class="ui four column grid">
+    <div class="column">
+        <h2>Todo</h2>
+        <div class="ui cards" id="todo-list">
+            {% for item in todo_list %}
+                <div class="red card">
+                    <div class="content">
+                        <i class="right floated star icon"></i>
+                        <div class="header">{{ item.title }}</div>
+                        <div class="description">
+                            {{ item.content }}
+                        </div>
+                    </div>
+                    <div class="ui red bottom attached button">
+                        <i class="edit icon"></i>
+                        edit
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="column">
+        <h2>In Progress</h2>
+        <div class="ui cards" id="progress-list">
+            {% for item in progress_list %}
+                <div class="orange card">
+                    <div class="content">
+                        <i class="right floated star icon"></i>
+                        <div class="header">{{ item.title }}</div>
+                        <div class="description">
+                            {{ item.content }}
+                        </div>
+                    </div>
+                    <div class="ui orange bottom attached button">
+                        <i class="edit icon"></i>
+                        edit
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="column">
+        <h2>Testing</h2>
+        <div class="ui cards" id="test-list">
+            {% for item in test_list %}
+                <div class="yellow card">
+                    <div class="content">
+                        <i class="right floated star icon"></i>
+                        <div class="header">{{ item.title }}</div>
+                        <div class="description">
+                            {{ item.content }}
+                        </div>
+                    </div>
+                    <div class="ui yellow bottom attached button">
+                        <i class="edit icon"></i>
+                        edit
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="column">
+        <h2>Done</h2>
+        <div class="ui cards" id="done-list">
+            {% for item in done_list %}
+                <div class="green card">
+                    <div class="content">
+                        <i class="right floated star icon"></i>
+                        <div class="header">{{ item.title }}</div>
+                        <div class="description">
+                            {{ item.content }}
+                        </div>
+                    </div>
+                    <div class="ui green bottom attached button">
+                        <i class="edit icon"></i>
+                        edit
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<script>
+var el = document.getElementById('todo-list');
+var sortable = Sortable.create(el);
+var el = document.getElementById('progress-list');
+var sortable = Sortable.create(el);
+var el = document.getElementById('test-list');
+var sortable = Sortable.create(el);
+var el = document.getElementById('done-list');
+var sortable = Sortable.create(el);
+
+
+</script>
+{% endblock %}

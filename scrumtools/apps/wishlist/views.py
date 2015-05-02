@@ -2,7 +2,6 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms.models import modelform_factory
-from datetimewidget.widgets import DateTimeWidget
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -14,18 +13,23 @@ class WishList(ListView):
 
 class WishCreate(CreateView):
     model = Wish
-    form_class =  modelform_factory(Wish, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
-    success_url = reverse_lazy('wishlist:wish_list')
+    form_class =  modelform_factory(Wish)
+    success_url = reverse_lazy('wishlist:wish-list')
+    template_name = 'wishlist/form.html'
 
 
 class WishUpdate(UpdateView):
     model = Wish
-    form_class =  modelform_factory(Wish, widgets={"created_on": DateTimeWidget(usel10n=True, bootstrap_version=3)})
-    success_url = reverse_lazy('wishlist:wish_list')
+    form_class =  modelform_factory(Wish)
+    success_url = reverse_lazy('wishlist:wish-list')
+    template_name = 'wishlist/form.html'
+
 
 class WishDelete(DeleteView):
     model = Wish
-    success_url = reverse_lazy('wishlist:wish_list')
+    success_url = reverse_lazy('wishlist:wish-list')
+    template_name = 'wishlist/confirm_delete.html'
+
 
 class WishDetail(DetailView):
     model = Wish

@@ -1,37 +1,57 @@
-{% extends 'base.html' %}
-{% load bootstrap3 %}
+{% extends "base.html" %}
+{% load sitetree %}
+
+{% block title %} {% sitetree_page_title from "main_en" %} {% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block statusbar %}
+    {% include "statusbar.html" %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
 
 {% block content %}
-    <div class="page-header">
-        <h1>
-            Projects <small>Manage projects</small>
-        </h1>
-    </div>
-    <ul class="breadcrumb">
-        <li>
-            <a href="/">Home</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="/page/scrumboard">ScrumBoard</a> <span class="divider">/</span>
-        </li>
-        <li>
-            <a href="/scrumboard/projectlist">Projects</a> <span class="divider">/</span>
-        </li>
-        <li class="active">
-            {{  project.name|capfirst|truncatewords:3 }}
-        </li>
-    </ul>
+    <div class="ui segment">
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                {{ project.name }}
-            </h3>
+        {#    Header#}
+        <div class="ui grid">
+
+            <div class="left floated left aligned ten wide column">
+                <h1 class="ui header"><i class="{% sitetree_page_hint from "main_en" %} icon"></i>
+
+                    <div class="content">
+                        {% sitetree_page_title from "main_en" %}
+                    </div>
+                </h1>
+            </div>
+            <div class="right floated right aligned six wide column">
+                <a href="{% url 'scrumboard:project-new' %}" class="blue ui labeled icon button"><i class="add icon"></i>Project</a>
+            </div>
+
         </div>
-        <div class="panel-body">
-            {{ project.description }}
-        </div>
+        {#    End Header#}
+
+        <table class="ui blue unstackable definition table">
+                        <tr>
+                <td>Name</td>
+                <td>{{ project.name }}</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td>{{ project.description }}</td>
+            </tr>
+            <tr>
+                <td>Created</td>
+                <td>{{ project.created_on }}</td>
+            </tr>
+
+        </table>
+        <a class="ui blue button" href="{% url "scrumboard:project-edit" project.id %}"><i class="edit icon"></i> Edit</a>
+        <a class="ui blue button" href="{% url "scrumboard:project-delete" project.id %}"><i class="trash icon"></i> Delete</a>
+
     </div>
-    <a href="{% url "scrumboard:project_edit" project.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'edit' %} edit</a>
-    <a href="{% url "scrumboard:project_delete" project.id %}" class="btn btn-primary" role="button">{% bootstrap_icon 'trash' %} delete</a>
 {% endblock %}

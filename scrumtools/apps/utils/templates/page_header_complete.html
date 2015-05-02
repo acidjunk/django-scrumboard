@@ -1,0 +1,35 @@
+<div class="ui grid">
+
+    <div class="left floated left aligned four wide column">
+        <h3 class="ui header"><i class="{{ icon }} icon"></i>
+
+            <div class="content">
+                {{ title }}
+            </div>
+        </h3>
+    </div>
+
+    <div class="center aligned six wide column">
+        <div class="ui form">
+            <form class="form-inline" style="margin-left: -15px" id="connections_search_form"
+                  method="get" action="">
+                <div class="inline fields">
+                    <div class="field">
+                        <div class="ui icon input">
+                            <input name="quicksearch" type="text" placeholder="Search..." value="{{ quicksearch }}">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="field">
+                            <input class="ui blue submit button" type="submit" value="Go"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="right floated right aligned five wide column">
+        <a href="{% url new_object_url %}" class="blue ui labeled icon button"><i class="add icon"></i>{{ new_object_name|capfirst }}</a>
+    </div>
+
+</div>
