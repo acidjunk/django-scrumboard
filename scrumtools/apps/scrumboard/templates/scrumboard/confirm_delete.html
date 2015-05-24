@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load sitetree %}
+
+{% block title %} Delete item {% endblock %}
+
+{% block statusbar %}
+
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui segment">
+
+        {#    Header#}
+
+        <h1 class="ui header"><i class="{% sitetree_page_hint from "main_en" %} icon"></i>
+
+            <div class="content">
+                {% sitetree_page_title from "main_en" %}
+            </div>
+        </h1>
+
+        {#    End Header#}
+
+        <form method="post">{% csrf_token %}
+            <div class="ui negative message">
+                <div class="header">
+                    Confirm delete
+                </div>
+                <p>Are you sure you want to delete "{{ object }}" ?</p>
+            </div>
+            <input class="ui red submit button" type="submit" value=" Delete "/>
+        </form>
+
+{% endblock %}

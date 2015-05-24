@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load sitetree %}
+{% load crispy_forms_tags %}
+
+{% block title %} IPAM - {% sitetree_page_title from "main_en" %} {% endblock %}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block statusbar %}
+    {% include "statusbar.html" %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+    <div class="ui segment">
+
+        {#    Header#}
+        <div class="ui grid">
+            <div class="row">
+
+                <div class="left floated left aligned six wide column">
+                    <h1 class="ui header"><i class="{% sitetree_page_hint from "main_en" %} icon"></i>
+
+                        <div class="content">
+                            {% sitetree_page_title from "main_en" %}
+                        </div>
+                    </h1>
+                </div>
+            </div>
+
+        </div>
+        {#    End Header#}
+        <div class="ui divider"></div>
+        <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="ui{% if message.tags == 'error' %} negative {% endif %}message">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+
+            <div class="ui form">
+            <form method="post">{% csrf_token %}
+                {{ form|crispy }}
+                <input class="ui blue submit button" type="submit" value=" Submit "/>
+            </form>
+                </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -5,6 +5,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.template import Template
 from django.utils._os import safe_join
+from django.shortcuts import redirect
 
 def get_page_or_404(name):
     """Return page content as a Django templae or raise 404 error."""
@@ -22,7 +23,11 @@ def get_page_or_404(name):
     return page
 
 def page(request, slug='home'):
-    """Render the requested page if found."""
+    #Check if user is logged in: the do a redirect to the dashboard
+    if 'home' in slug and request.user.is_authenticated():
+        return redirect('scrumboard:dashboard')
+
+    #Render the requested page if found.
     file_name = '{}.html'.format(slug)
     page = get_page_or_404(file_name)
     context = { 'slug': slug, 'page': page}

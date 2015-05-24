@@ -1,0 +1,16 @@
+<div class="ui grid">
+
+    <div class="left floated left aligned ten wide column">
+        <h1 class="ui header"><i class="{{ icon }} icon"></i>
+
+            <div class="content">
+                {{ title }}
+            </div>
+        </h1>
+    </div>
+
+    <div class="right floated right aligned six wide column">
+        <a href="{% url 'ipam:ipaddress-new' %}" class="green ui labeled icon button"><i class="add icon"></i>{{ new_object_name|capfirst }}</a>
+    </div>
+
+</div>

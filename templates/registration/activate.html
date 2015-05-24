@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="ui two column centered grid">
+        <div class="column">
+            <div class="ui green raised segment">
+                <h2 class="ui dividing header">{% trans "Account activation" %}</h2>
+                <p>{% trans "Account activation failed" %}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

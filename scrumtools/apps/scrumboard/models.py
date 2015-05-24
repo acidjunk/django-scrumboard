@@ -54,16 +54,9 @@ class Story(models.Model):
     project = models.ForeignKey(Project)
     name=models.CharField(max_length=200)
     description=models.TextField()
-    status = models.ForeignKey(Status)
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
-    story_points=models.IntegerField(default=0)
-    estimated_days=models.IntegerField(default=0)
     created_on=models.DateTimeField()
     modified_on=models.DateTimeField(default=datetime.datetime.now())
-    assigned = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
-    started = models.DateField(blank=True, null=True)
-    due = models.DateField(blank=True, null=True)
-    completed = models.DateField(blank=True, null=True)
 
     class Meta:
         verbose_name = _('Story')
