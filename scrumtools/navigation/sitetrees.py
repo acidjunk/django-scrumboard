@@ -22,8 +22,7 @@ sitetrees = (
             item('View Wish "{{ wish.name }}', 'wishlist:wish-detail wish.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='search'),
             item('Delete Wish "{{ wish.name }}"', 'wishlist:wish-delete wish.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='trash'),
         ]),
-        item('Scrumboard', '', access_loggedin=True, url_as_pattern=False, hint='windows', children=[
-            item('Dashboard', '/scrumboard/dashboard', access_loggedin=True, access_guest=False, url_as_pattern=False, hint='windows'), # set alternative home for logged in users
+        item('Scrum', '', access_loggedin=True, url_as_pattern=False, hint='windows', children=[
             item('List Sprints', 'scrumboard:sprint-list',  access_loggedin=True, in_menu=True, in_sitetree=True, hint='list'),
             item('Add Sprint', 'scrumboard:sprint-new',access_loggedin=True, in_menu=True, in_sitetree=True, hint='plus'),
             item('Edit Sprint "{{ sprint.name }}"', 'scrumboard:sprint-edit sprint.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='edit'),
@@ -51,6 +50,11 @@ sitetrees = (
             item('Edit Status "{{ status.name }}"', 'scrumboard:status-edit status.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='edit'),
             item('View Status "{{ status.name }}"', 'scrumboard:status-detail status.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='search'),
             item('Delete Status "{{ status.name }}"', 'scrumboard:status-delete status.id', access_loggedin=True, in_menu=False, in_sitetree=False, hint='trash'),
+        ]),
+        item('ScrumBoard', '', access_loggedin=True, url_as_pattern=False, hint='grid layout', children=[
+            item('Dashboard', '/scrumboard/dashboard', access_loggedin=True, access_guest=False, url_as_pattern=False, hint='windows'), # set alternative home for logged in users
+            item('Select Project', 'scrumboard:select-project', access_loggedin=True, in_menu=True, in_sitetree=True, hint='checkmark box'),
+            item('Select Sprint', 'scrumboard:select-sprint', access_loggedin=True, in_menu=True, in_sitetree=True, hint='checkmark box'),
         ]),
         item('Help', '/page/help/', url_as_pattern=False, hint='question', children=[
             item('Wishlist help', '/page/help-wishlist', url_as_pattern=False, in_menu=True, in_sitetree=True, hint='shop'),

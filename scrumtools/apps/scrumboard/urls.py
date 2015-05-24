@@ -31,5 +31,7 @@ urlpatterns = patterns('',
     url(r'^tasklist/detail/(?P<pk>\d+)$', views.TaskDetail.as_view(), name='task-detail'),
     url(r'^tasklist/new$', views.TaskCreate.as_view(), name='task-new'),
     url(r'^tasklist/edit/(?P<pk>\d+)$', views.TaskUpdate.as_view(), name='task-edit'),
-    url(r'^tasklist/delete/(?P<pk>\d+)$', views.TaskDelete.as_view(), name='task-delete')
+    url(r'^tasklist/delete/(?P<pk>\d+)$', views.TaskDelete.as_view(), name='task-delete'),
+    url(r'^select-project', views.select_project, name='select-project'),
+    url(r'^select-sprint', views.select_sprint, name='select-sprint'),
 )

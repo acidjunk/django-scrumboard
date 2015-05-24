@@ -79,6 +79,8 @@ DATABASES = {
     }
 }
 
+CRISPY_TEMPLATE_PACK='semantic-ui'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 

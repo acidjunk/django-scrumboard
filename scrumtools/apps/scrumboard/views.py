@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from scrumtools.apps.scrumboard.models import Project, Status, Sprint, Story, Task
+from scrumtools.apps.scrumboard.forms import ProjectForm, SprintForm
 
 #dashboard
 @login_required
@@ -158,3 +159,37 @@ class TaskDelete(DeleteView):
 
 class TaskDetail(DetailView):
     model = Task
+
+def select_project(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = ProjectForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            request.session['selected_project']=request.POST.get('project_name', None)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = ProjectForm()
+    context_dict = {
+        'form':form
+    }
+    return render(request, 'scrumboard/select_project.html', context_dict)
+
+def select_sprint(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = SprintForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            request.session['selected_sprint']=request.POST.get('sprint_name', None)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = SprintForm()
+    context_dict = {
+        'form':form
+    }
+    return render(request, 'scrumboard/select_sprint.html', context_dict)
