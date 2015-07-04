@@ -35,7 +35,7 @@
             </div>
     {%  endif %}
     {% if item.has_children %}
-        <div class="ui dropdown {% if item.is_current or item.in_current_branch %}active{% endif %} item"><i class="{{ item.hint }} icon"></i> {{ item.title_resolved }} <i class="dropdown icon"></i>
+        <div class="ui dropdown item"><i class="{% if item.is_current or item.in_current_branch %}green {% endif %}{{ item.hint }} icon"></i>{% if item.is_current or item.in_current_branch %}<b>{% endif %}{{ item.title_resolved }}{% if item.is_current or item.in_current_branch %}</b>{% endif %}<i class="{% if item.is_current or item.in_current_branch %}green {% endif %}dropdown icon"></i>
             {% sitetree_children of item for menu template "sitetree/menu_semantic_dropdown.html" %}
         </div>
     {% else %}

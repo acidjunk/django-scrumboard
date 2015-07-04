@@ -171,7 +171,7 @@ def select_project(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = ProjectForm()
+        form = ProjectForm(initial={'project_name': request.session['selected_project']})
     context_dict = {
         'form':form
     }
@@ -188,7 +188,7 @@ def select_sprint(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        form = SprintForm()
+        form = SprintForm(initial={'sprint_name': request.session['selected_sprint']})
     context_dict = {
         'form':form
     }

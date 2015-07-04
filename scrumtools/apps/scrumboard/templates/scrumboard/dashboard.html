@@ -5,11 +5,28 @@
 {% endblock %}
 
 {% block statusbar %}
-    <h1 class="ui header"><i class="windows icon"></i>
-        <div class="content">
-            Scrumboard
+    <div class="ui right aligned grid">
+        <div class="left floated left aligned ten wide column">
+
+            <h1 class="ui header"><i class="windows icon"></i>
+
+                <div class="content">
+                    Scrumboard
+                </div>
+            </h1>
+
         </div>
-    </h1>
+        <div class="left floated right aligned five wide column">
+            {% load selector %}
+            {% project_selector request.session.selected_project %} &nbsp;|&nbsp;
+            {% sprint_selector request.session.selected_sprint %}
+        </div>
+        <div class="right floated right aligned one wide column">
+            <div id="version_popup" class="small ui icon" data-title="Version info"
+                 data-html="{% include "version.html" %}"><i class="info icon"></i></div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block content %}

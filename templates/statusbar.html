@@ -1,6 +1,6 @@
 <div class="ui segment">
     <div class="ui right aligned grid">
-        <div class="left floated left aligned fourteen wide column">
+        <div class="left floated left aligned ten wide column">
 
             <div class="ui inverted breadcrumb">
                 {% load sitetree %}
@@ -8,8 +8,12 @@
             </div>
 
         </div>
-        <div class="right floated right aligned two wide column">
-
+        <div class="left floated right aligned five wide column">
+            {% load selector %}
+            {% project_selector request.session.selected_project %} &nbsp;|&nbsp;
+            {% sprint_selector request.session.selected_sprint %}
+        </div>
+        <div class="right floated right aligned one wide column">
             <div id="version_popup" class="small ui icon" data-title="Version info" data-html="{% include "version.html" %}"><i class="info icon"></i></div>
         </div>
     </div>
