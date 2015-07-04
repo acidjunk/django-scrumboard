@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/acidjunk/django-scrumboard.svg?branch=master)](https://travis-ci.org/acidjunk/django-scrumboard)
+
 # django-scrumboard
 A ScrumBoard app in Django
 
