@@ -12,6 +12,7 @@ If you need testdat:
 python manage.py createsuperuser
 python manage.py loaddata wishlist
 python manage.py loaddata scrumboard
+python manage.py sitetree_resync_apps
 
 Changelog
 ----------
