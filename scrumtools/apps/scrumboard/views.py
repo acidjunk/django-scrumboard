@@ -10,27 +10,22 @@ from django.contrib.auth.decorators import login_required
 from scrumtools.apps.scrumboard.models import Project, Status, Sprint, Story, Task
 from scrumtools.apps.scrumboard.forms import ProjectForm, SprintForm
 
+import json
+import urllib2
+data = json.load(urllib2.urlopen("https://api.github.com/repos/acidjunk/django-scrumboard/issues"))
+
+
 #dashboard
 @login_required
 def dashboard(request):
-    todo_list = [{'title': 'item 1',
-                  'content': 'Some bogus content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget ultricies arcu. Vivamus a ex ac neque placerat placerat. Nam vitae suscipit tellus. Duis ut metus sem. Vestibulum molestie, dui sed sodales maximus, lorem dui eleifend nisl, id luctus urna mi at est. Etiam ut lobortis nisl.'},
-                 {'title': 'item 2',
-                  'content': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget ultricies arcu. Vivamus a ex ac neque placerat placerat. Nam vitae suscipit tellus. Duis ut metus sem.'}]
-    progress_list = [{'title': 'item 3',
-                      'content': 'Some bogus content. Vestibulum molestie, dui sed sodales maximus, lorem dui eleifend nisl, id luctus urna mi at est. Etiam ut lobortis nisl.'},
-                     {'title': 'item 4',
-                      'content': 'Some bogus content. Nulla at euismod orci. Mauris suscipit, velit non vestibulum bibendum, lorem massa cursus nisi, posuere consequat massa magna eget enim. Maecenas lobortis elit ex, ac condimentum purus facilisis quis. Sed varius mi ac orci finibus, ac vehicula sem interdum. Nam rhoncus erat non libero vestibulum tincidunt. Curabitur tempor bibendum tellus, eu placerat nibh posuere sed.'}]
-    test_list = [{'title': 'item 5',
-                  'content': 'Some bogus content. Mauris mattis dolor libero, in porta leo viverra a. Curabitur pharetra nibh mauris. Sed purus urna, fringilla at ornare id, vulputate ut elit. Sed velit ante, facilisis eu finibus nec, efficitur sit amet ex. Proin ac nisl enim. Pellentesque aliquet ligula id sapien efficitur, nec suscipit ipsum faucibus.'},
-                 {'title': 'item 6',
-                  'content': 'Some bogus content. Sed gravida ornare lacus eu convallis. Nam quis erat sodales, tempor tortor fermentum, fermentum urna. Aliquam porttitor lectus finibus est aliquam mollis.'}]
-    done_list = [{'title': 'item 7',
-                  'content': 'Some bogus content. Cras non elit bibendum, feugiat metus eu, pellentesque libero. Vivamus at faucibus nulla. Fusce et nunc sit amet felis tristique hendrerit eu sed diam. Ut eget eros laoreet, semper nulla in, bibendum orci.'},
-                 {'title': 'item 8', 'content': 'Some bogus content'},
-                 {'title': 'item 9', 'content': 'Some bogus content'},
-                 {'title': 'item 10', 'content': 'Some bogus content'},
-                 {'title': 'item 11', 'content': 'Some bogus content'}]
+    todo_list = []
+    progress_list = []
+    test_list = []
+    done_list = []
+
+    for i in data:
+        todo_list.append({'title': i['number'], 'content': i['title']})
+
     context_dict = {
         'todo_list': todo_list,
         'progress_list': progress_list,
