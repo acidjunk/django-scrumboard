@@ -25,6 +25,9 @@ def dashboard(request):
 
     for i in data:
         todo_list.append({'title': i['number'], 'content': i['title']})
+        progress_list.append({'title': i['number'], 'content': i['title']})
+        test_list.append({'title': i['number'], 'content': i['title']})
+        done_list.append({'title': i['number'], 'content': i['title']})
 
     context_dict = {
         'todo_list': todo_list,
@@ -154,7 +157,7 @@ class TaskDelete(DeleteView):
 class TaskDetail(DetailView):
     model = Task
 
-class GetIssues(CreateView): # import
+class GetIssues(TemplateView): # import
     for i in data:
         task = Task()
         task.Project = "Project 1"
@@ -163,7 +166,7 @@ class GetIssues(CreateView): # import
         task.Status = "Stat1"
         task.Sprint = "Meer koffie"
         task.Story = ""
-        task.Story_points = 0
+        task.Story_points = 1
         task.estimated_days = 5
         task.created_on = "2015-01-01"  # date(2015,1,1)
         task.modified_on = "2015-05-03"  # date(2015,5,3)
@@ -171,6 +174,7 @@ class GetIssues(CreateView): # import
         task.started = "2015-01-01"
         task.due = "2015-05-03"
         task.completed = "2015-08-08"
+        task.save()
 
 
 def select_project(request):
