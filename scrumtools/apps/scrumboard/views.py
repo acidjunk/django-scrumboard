@@ -23,8 +23,8 @@ def dashboard(request):
     test_list = []
     done_list = []
 
-    for i in data:
-        todo_list.append({'title': i['number'], 'content': i['title']})
+    #for i in data:
+     #   todo_list.append({'title': i['number'], 'content': i['title']})
 
     context_dict = {
         'todo_list': todo_list,
@@ -146,7 +146,6 @@ class TaskUpdate(UpdateView):
     success_url = reverse_lazy('scrumboard:task-list')
     template_name = 'scrumboard/form.html'
 
-
 class TaskDelete(DeleteView):
     model = Task
     success_url = reverse_lazy('scrumboard:task-list')
@@ -154,6 +153,25 @@ class TaskDelete(DeleteView):
 
 class TaskDetail(DetailView):
     model = Task
+
+class GetIssues(CreateView): # import
+    for i in data:
+        task = Task()
+        task.Project = "Project 1"
+        task.name = i['number']
+        task.description = i['title']
+        task.Status = "Stat1"
+        task.Sprint = "Meer koffie"
+        task.Story = ""
+        task.Story_points = 0
+        task.estimated_days = 5
+        task.created_on = "2015-01-01"  # date(2015,1,1)
+        task.modified_on = "2015-05-03"  # date(2015,5,3)
+        # task.assigned
+        task.started = "2015-01-01"
+        task.due = "2015-05-03"
+        task.completed = "2015-08-08"
+
 
 def select_project(request):
     # if this is a POST request we need to process the form data
