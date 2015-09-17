@@ -190,6 +190,7 @@ def select_project(request):
     }
     return render(request, 'scrumboard/select_project.html', context_dict)
 
+
 def select_sprint(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
