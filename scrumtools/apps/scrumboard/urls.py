@@ -34,4 +34,6 @@ urlpatterns = patterns('',
     url(r'^tasklist/delete/(?P<pk>\d+)$', views.TaskDelete.as_view(), name='task-delete'),
     url(r'^select-project', views.select_project, name='select-project'),
     url(r'^select-sprint', views.select_sprint, name='select-sprint'),
+    url(r'^import/$', views.Import.as_view(), name='import'),
+
 )

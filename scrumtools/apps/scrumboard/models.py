@@ -15,6 +15,7 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class Project(models.Model):
     name = models.CharField(max_length=100)
+    github_project = models.URLField(blank=True, null=True)
 
     class Meta:
         verbose_name = _('Project')
@@ -56,7 +57,7 @@ class Story(models.Model):
     description=models.TextField()
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
     created_on=models.DateTimeField()
-    modified_on=models.DateTimeField(default=datetime.datetime.now())
+    modified_on=models.DateTimeField(default=timezone.now)
 
     class Meta:
         verbose_name = _('Story')
@@ -78,6 +79,7 @@ class Task(models.Model):
     """Smallest unit of work to be done for the sprint."""
     project = models.ForeignKey(Project)
     name=models.CharField(max_length=200)
+    github_id = models.IntegerField(default=0)
     description=models.TextField()
     status = models.ForeignKey(Status)
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
@@ -85,7 +87,7 @@ class Task(models.Model):
     story_points=models.IntegerField(default=0)
     estimated_days=models.IntegerField(default=0)
     created_on=models.DateTimeField()
-    modified_on=models.DateTimeField(default=datetime.datetime.now())
+    modified_on=models.DateTimeField(default=timezone.now)
     assigned = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
     started = models.DateField(blank=True, null=True)
     due = models.DateField(blank=True, null=True)

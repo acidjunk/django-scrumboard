@@ -1,4 +1,4 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms.models import modelform_factory
@@ -9,11 +9,10 @@ from django.contrib.auth.decorators import login_required
 
 from scrumtools.apps.scrumboard.models import Project, Status, Sprint, Story, Task
 from scrumtools.apps.scrumboard.forms import ProjectForm, SprintForm
+from django.utils import timezone
 
 import json
 import urllib2
-data = json.load(urllib2.urlopen("https://api.github.com/repos/acidjunk/django-scrumboard/issues"))
-
 
 #dashboard
 @login_required
@@ -157,24 +156,51 @@ class TaskDelete(DeleteView):
 class TaskDetail(DetailView):
     model = Task
 
-class GetIssues(TemplateView): # import
-    for i in data:
-        task = Task()
-        task.Project = "Project 1"
-        task.name = i['number']
-        task.description = i['title']
-        task.Status = "Stat1"
-        task.Sprint = "Meer koffie"
-        task.Story = ""
-        task.Story_points = 1
-        task.estimated_days = 5
-        task.created_on = "2015-01-01"  # date(2015,1,1)
-        task.modified_on = "2015-05-03"  # date(2015,5,3)
-        # task.assigned
-        task.started = "2015-01-01"
-        task.due = "2015-05-03"
-        task.completed = "2015-08-08"
-        task.save()
+class Import(TemplateView): # import
+    template_name = 'scrumboard/import.html'
+
+    def get(self, request, *args, **kwargs):
+        # Todo: make this dynamic
+        project = Project.objects.get(pk=1)
+
+        # Todo:
+        status = Status.objects.get(pk=1)
+        print project, status
+        data = json.load(urllib2.urlopen("https://api.github.com/repos/acidjunk/django-scrumboard/issues"))
+        for item in data:
+            # insert to DB
+            task = Task()
+            task.project = project
+            task.status = status
+            task.name = 'Github issues: %s' % item['number']
+            task.github_id = item['number']
+            task.description = item['body']
+            task.created_on = timezone.now()
+            task.modified_on = timezone.now()
+            task.save()
+
+        context = {'data': data}
+        return self.render_to_response(context)
+
+
+
+    # for i in data:
+    #     task = Task()
+    #     task.Project = "Project 1"
+    #     task.name = i['number']
+    #     task.description = i['title']
+    #     task.Status = "Stat1"
+    #     task.Sprint = "Meer koffie"
+    #     task.Story = ""
+    #     task.Story_points = 1
+    #     task.estimated_days = 5
+    #     task.created_on = "2015-01-01"  # date(2015,1,1)
+    #     task.modified_on = "2015-05-03"  # date(2015,5,3)
+    #     # task.assigned
+    #     task.started = "2015-01-01"
+    #     task.due = "2015-05-03"
+    #     task.completed = "2015-08-08"
+    #     task.save()
 
 
 def select_project(request):

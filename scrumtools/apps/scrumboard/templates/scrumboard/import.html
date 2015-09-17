@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load sitetree %}
+
+{#{% block title %} {% sitetree_page_title from "main_en" %} {% endblock %}#}
+
+{% block navbar %}
+    {% include "navbar.html" %}
+{% endblock %}
+
+{% block statusbar %}
+    {% include "statusbar.html" %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block content %}
+
+    {% for item in data %}
+        imported : {{ item.title }}<br>
+    {% endfor %}
+
+{% endblock %}
