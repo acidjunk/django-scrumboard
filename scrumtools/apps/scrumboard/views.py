@@ -23,8 +23,8 @@ def dashboard(request):
     test_list = []
     done_list = []
 
-    #for i in data:
-     #   todo_list.append({'title': i['number'], 'content': i['title']})
+    for i in data:
+        todo_list.append({'title': i['number'], 'content': i['title']})
 
     context_dict = {
         'todo_list': todo_list,
