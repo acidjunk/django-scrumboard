@@ -56,8 +56,8 @@ class Story(models.Model):
     name=models.CharField(max_length=200)
     description=models.TextField()
     sprint = models.ForeignKey(Sprint, blank=True, null=True)
-    created_on=models.DateTimeField()
-    modified_on=models.DateTimeField(default=timezone.now)
+    created_on=models.DateTimeField(auto_now_add=True)
+    modified_on=models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = _('Story')
@@ -86,8 +86,8 @@ class Task(models.Model):
     story = models.ForeignKey(Story, blank=True, null=True)
     story_points=models.IntegerField(default=0)
     estimated_days=models.IntegerField(default=0)
-    created_on=models.DateTimeField()
-    modified_on=models.DateTimeField(default=timezone.now)
+    created_on=models.DateTimeField(auto_now_add=True)
+    modified_on=models.DateTimeField(auto_now_add=True)
     assigned = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True)
     started = models.DateField(blank=True, null=True)
     due = models.DateField(blank=True, null=True)

@@ -14,7 +14,7 @@ class Wish(models.Model):
     name=models.CharField(max_length=200)
     description=models.TextField()
     votes=models.IntegerField(default=0)
-    created_on=models.DateTimeField('Creation date')
+    created_on=models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = _('Wish')

@@ -8,7 +8,6 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from scrumtools.apps.scrumboard.models import Project, Status, Sprint, Story, Task
-from scrumtools.apps.scrumboard.forms import ProjectForm, SprintForm
 from django.utils import timezone
 
 import json
@@ -66,16 +65,19 @@ class StatusList(ListView):
 
 class StatusCreate(CreateView):
     model = Status
+    fields = ['name','order']
     success_url = reverse_lazy('scrumboard:status-list')
     template_name = 'scrumboard/form.html'
 
 class StatusUpdate(UpdateView):
     model = Status
+    fields = ['name','order']
     success_url = reverse_lazy('scrumboard:status-list')
     template_name = 'scrumboard/form.html'
 
 class StatusDelete(DeleteView):
     model = Status
+    fields = ['name','order']
     success_url = reverse_lazy('scrumboard:status-list')
     template_name = 'scrumboard/confirm_delete.html'
 
@@ -113,23 +115,27 @@ class StoryList(ListView):
 
 class StoryCreate(CreateView):
     model = Story
-    form_class = modelform_factory(Story)
+    fields = ['project', 'name', 'description', 'sprint']
+    #form_class = modelform_factory(Story)
     success_url = reverse_lazy('scrumboard:story-list')
     template_name = 'scrumboard/form.html'
 
 class StoryUpdate(UpdateView):
     model = Story
-    form_class = modelform_factory(Story)
+    fields = ['project', 'name', 'description', 'sprint']
     success_url = reverse_lazy('scrumboard:story-list')
     template_name = 'scrumboard/form.html'
 
 class StoryDelete(DeleteView):
     model = Story
+    fields = ['project', 'name', 'description', 'sprint']
     success_url = reverse_lazy('scrumboard:story-list')
     template_name = 'scrumboard/confirm_delete.html'
 
 class StoryDetail(DetailView):
     model = Story
+    fields = ['project', 'name', 'description', 'sprint']
+
 
 #Tasks
 class TaskList(ListView):
@@ -138,13 +144,11 @@ class TaskList(ListView):
 
 class TaskCreate(CreateView):
     model = Task
-    form_class = modelform_factory(Task)
     success_url = reverse_lazy('scrumboard:task-list')
     template_name = 'scrumboard/form.html'
 
 class TaskUpdate(UpdateView):
     model = Task
-    form_class = modelform_factory(Task)
     success_url = reverse_lazy('scrumboard:task-list')
     template_name = 'scrumboard/form.html'
 
