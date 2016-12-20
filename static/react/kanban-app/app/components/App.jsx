@@ -12,15 +12,15 @@ export default class App extends React.Component {
       tasks: [
         {
           id: uuid.v4(),
-          task: 'Implement other data structures'
+          name: 'Implement other data structures'
         },
         {
           id: uuid.v4(),
-          task: 'Use test data from other sources'
+          name: 'Use test data from other sources'
         },
         {
           id: uuid.v4(),
-          task: 'Finish the kanban implementation'
+          name: 'Finish the kanban implementation'
         }
       ]
     };
@@ -47,7 +47,7 @@ export default class App extends React.Component {
     this.setState({
       tasks: this.state.tasks.concat([{
         id: uuid.v4(),
-        task: 'New task'
+        name: 'New task'
       }])
     });
   }
@@ -72,12 +72,12 @@ export default class App extends React.Component {
     });
   }
 
-  editTask = (id, task) => {
+  editTask = (id, name) => {
     this.setState({
       tasks: this.state.tasks.map(task => {
         if(task.id === id) {
           task.editing = false;
-          task.task = task;
+          task.name = name;
         }
         return task;
       })
