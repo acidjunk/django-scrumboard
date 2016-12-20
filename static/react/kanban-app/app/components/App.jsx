@@ -30,8 +30,11 @@ export default class App extends React.Component {
     const {tasks} = this.state;
 
     return (
-      <div>
-        <button onClick={this.addTask}>+</button>
+      <div className="ui container">
+        <link rel="stylesheet" type="text/css" href="/app/semantic-ui/semantic.min.css" />
+        <script src="/app/semantic-ui/semantic.min.js"></script>
+        <h1 className="ui header">Kanban Backlog</h1>
+        <button className="ui blue icon button" onClick={this.addTask}><i className="add icon"></i>Task</button>
         <Tasks
           tasks={tasks}
           onTaskClick={this.activateTaskEdit}

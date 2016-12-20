@@ -6,8 +6,8 @@ export default ({
   tasks,
   onTaskClick=() => {}, onEdit=() => {}, onDelete=() => {}
 }) => (
-    <ul>{tasks.map(({id, editing, name}) =>
-      <li key={id}>
+    <div className="ui list">{tasks.map(({id, editing, name}) =>
+      <div className="item" key={id}>
         <Task onClick={onTaskClick.bind(null, id)}>
           <Editable
              editing={editing}
@@ -15,6 +15,6 @@ export default ({
              onEdit={onEdit.bind(null, id)} />
           <button onClick={onDelete.bind(null, id)}>x</button>
         </Task>
-      </li>
-    )}</ul>
+      </div>
+    )}</div>
 )
