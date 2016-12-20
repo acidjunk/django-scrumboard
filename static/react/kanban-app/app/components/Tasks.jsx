@@ -3,10 +3,10 @@ import Task from './Task';
 import Editable from './Editable';
 
 export default ({
-  notes,
+  tasks,
   onTaskClick=() => {}, onEdit=() => {}, onDelete=() => {}
 }) => (
-    <ul>{notes.map(({id, editing, task}) =>
+    <ul>{tasks.map(({id, editing, task}) =>
       <li key={id}>
         <Task onClick={onTaskClick.bind(null, id)}>
           <Editable

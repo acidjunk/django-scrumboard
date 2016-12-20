@@ -8,8 +8,8 @@ export default class App extends React.Component {
     super(props);
 
     this.state = {
-      // Temporary datastore for notes
-      notes: [
+      // Temporary datastore for tasks
+      tasks: [
         {
           id: uuid.v4(),
           task: 'Implement other data structures'
@@ -27,13 +27,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {notes} = this.state;
+    const {tasks} = this.state;
 
     return (
       <div>
         <button onClick={this.addTask}>+</button>
         <Tasks
-          notes={notes}
+          tasks={tasks}
           onTaskClick={this.activateTaskEdit}
           onEdit={this.editTask}
           onDelete={this.deleteTask}
@@ -43,9 +43,9 @@ export default class App extends React.Component {
   }
 
   addTask = () => {
-    console.log('Adding a new note');
+    console.log('Adding a new task');
     this.setState({
-      notes: this.state.notes.concat([{
+      tasks: this.state.tasks.concat([{
         id: uuid.v4(),
         task: 'New task'
       }])
@@ -57,29 +57,29 @@ export default class App extends React.Component {
     e.stopPropagation();
 
     this.setState({
-      notes: this.state.notes.filter(note => note.id !== id)
+      tasks: this.state.tasks.filter(task => task.id !== id)
     });
   }
 
   activateTaskEdit = (id) => {
     this.setState({
-      notes: this.state.notes.map(note => {
-        if(note.id === id) {
-          note.editing = true;
+      tasks: this.state.tasks.map(task => {
+        if(task.id === id) {
+          task.editing = true;
         }
-        return note;
+        return task;
       })
     });
   }
 
   editTask = (id, task) => {
     this.setState({
-      notes: this.state.notes.map(note => {
-        if(note.id === id) {
-          note.editing = false;
-          note.task = task;
+      tasks: this.state.tasks.map(task => {
+        if(task.id === id) {
+          task.editing = false;
+          task.task = task;
         }
-        return note;
+        return task;
       })
     });
   }
