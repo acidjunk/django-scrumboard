@@ -12,11 +12,43 @@ export default class App extends React.Component {
       tasks: [
         {
           id: uuid.v4(),
-          name: 'Implement other data structures'
+          name: 'Implement a react scrumboard'
         },
         {
           id: uuid.v4(),
-          name: 'Use test data from other sources'
+          name: 'Implement a react backlog'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Fix the semantic-ui fluid text input'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Fix saving a tasks to the backend'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Implement the nested story/task model'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Populate all components with live data from the backend'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Add the missings fields to the react model: status, description, etc.'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Make it possible to mark a task as done'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Implement drag and drop in the backlog'
+        },
+        {
+          id: uuid.v4(),
+          name: 'Implement a way to search in the backlog'
         },
         {
           id: uuid.v4(),
