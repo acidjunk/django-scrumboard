@@ -1,5 +1,5 @@
 import React from 'react';
-import Notes from './Notes';
+import Tasks from './Tasks';
 
 import uuid from 'uuid';
 
@@ -31,18 +31,18 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <button onClick={this.addNote}>+</button>
-        <Notes
+        <button onClick={this.addTask}>+</button>
+        <Tasks
           notes={notes}
-          onNoteClick={this.activateNoteEdit}
-          onEdit={this.editNote}
-          onDelete={this.deleteNote}
+          onTaskClick={this.activateTaskEdit}
+          onEdit={this.editTask}
+          onDelete={this.deleteTask}
           />
       </div>
     );
   }
 
-  addNote = () => {
+  addTask = () => {
     console.log('Adding a new note');
     this.setState({
       notes: this.state.notes.concat([{
@@ -52,7 +52,7 @@ export default class App extends React.Component {
     });
   }
 
-  deleteNote = (id, e) => {
+  deleteTask = (id, e) => {
     // Avoid bubbling to edit
     e.stopPropagation();
 
@@ -61,7 +61,7 @@ export default class App extends React.Component {
     });
   }
 
-  activateNoteEdit = (id) => {
+  activateTaskEdit = (id) => {
     this.setState({
       notes: this.state.notes.map(note => {
         if(note.id === id) {
@@ -72,7 +72,7 @@ export default class App extends React.Component {
     });
   }
 
-  editNote = (id, task) => {
+  editTask = (id, task) => {
     this.setState({
       notes: this.state.notes.map(note => {
         if(note.id === id) {
